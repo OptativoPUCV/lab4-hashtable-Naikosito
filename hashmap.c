@@ -81,14 +81,11 @@ int pos = hash(key, map->capacity);
     pos = (pos + 1) % map->capacity;
   }
   // Si llega a una casilla NULL significa que no esta en la lista, devuelve NULL
-  if (map->buckets[pos] == NULL)
-    return;
-
-  else
+  if (map->buckets[pos] != NULL && strcmp(map->buckets[pos]->key, key) == 0) 
   {
-    map->buckets[pos]->key = NULL;
-    map->size--;
-  }
+        map->buckets[pos]->key = NULL;
+        map->size--;
+    }
 }
 
 Pair * searchMap(HashMap * map,  char * key)
