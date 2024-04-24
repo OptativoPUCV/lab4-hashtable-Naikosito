@@ -143,13 +143,13 @@ Pair * nextMap(HashMap * map)
   // al ser circular debemos asegurnarnos de que vuelva al principio en caso de llegar al tamaño de la tabla
   int pos = (map->current + 1) % map->capacity;
 
-  if (pos == map->current) {
-    return NULL;
-  }
   
   while (map->buckets[pos] == NULL || map->buckets[pos]->key == NULL) 
   {
     pos = (pos + 1) % map->capacity;
+    // If we've looped back to the current index, there are no more elements
+    if(pos == map->current)
+      return NULL;
   }
   
   map->current = pos;
