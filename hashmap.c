@@ -113,9 +113,9 @@ Pair * firstMap(HashMap * map)
   // primera posicion del arreglo
   int pos = 0; 
 
-  while (map->buckets[pos] == NULL) 
+  while (map->buckets[pos]->key == NULL) 
   {
-    pos++;
+    pos = (pos + 1) % map->capacity;
   }
 
   map->current = pos;
