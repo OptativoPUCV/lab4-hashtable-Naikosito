@@ -138,18 +138,17 @@ Pair * firstMap(HashMap * map)
   return map->buckets[pos];
 }
 
-Pair * nextMap(HashMap * map) 
-{  
-  // al ser circular debemos asegurnarnos de que vuelva al principio en caso de llegar al tamaño de la tabla
-  int pos = (map->current + 1) % map->capacity;
+Pair* nextMap(HashMap* map) {
+    if (map == NULL || map->size == 0 || map->buckets == NULL) {
+        return NULL; // Verificar si el mapa es válido y no está vacío
+    }
 
-  
-  while (map->buckets[pos] == NULL || map->buckets[pos]->key == NULL) 
-  {
-    pos = (pos + 1) % map->capacity;
-  }
-  
-  map->current = pos;
-  
-  return map->buckets[pos];
+    for (int i = map->current + 1; i < map->size; i++) {
+        if (map->buckets[i] != NULL) {
+            map->current = i; // Actualizar el índice actual
+            return map->buckets[i]; // Retornar el siguiente Pair no nulo
+        }
+    }
+
+    return NULL; // Si no se encontró ningún Pair válido después del índice actual
 }
