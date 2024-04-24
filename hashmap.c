@@ -56,6 +56,20 @@ void insertMap(HashMap * map, char * key, void * value)
 void enlarge(HashMap * map) {
     enlarge_called = 1; //no borrar (testing purposes)
 
+  Pair** oldBuckets = map->buckets;
+  int oldCapacity = map->capacity;
+
+  map->capacity = oldCapacity * 2;
+  
+  map->buckets = (Pair**)calloc(map->capacity, sizeof(Pair*));
+  map->size = 0;
+
+  for (int i = 0; i < oldCapacity; i++)
+    {
+      insertMap(map,oldBuckets[i]->key, oldBuckets[i]->value);
+      free(oldBuckets[i]);
+    }
+  
 
 }
 
@@ -126,9 +140,9 @@ Pair * firstMap(HashMap * map)
 Pair * nextMap(HashMap * map) 
 {  
   // al ser circular debemos asegurnarnos de que vuelva al principio en caso de llegar al tamaño de la tabla
-  int pos = (map->current + 1);
+  int pos = (map->current + 1) % map->capacity;
   
-  while (map->buckets[pos] == NULL) 
+  while (map->buckets[pos] == NULL || map->buckets[pos]->key == NULL) 
   {
     pos = (pos + 1) % map->capacity;
   }
