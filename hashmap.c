@@ -108,12 +108,31 @@ int pos = hash(key, map->capacity);
   }
 }
 
-Pair * firstMap(HashMap * map) {
+Pair * firstMap(HashMap * map) 
+{
+  // primera posicion del arreglo
+  int pos = 0; 
 
-    return NULL;
+  while (map->buckets[pos] == NULL) 
+  {
+    pos = (pos + 1) % map->capacity;
+  }
+
+  map->current = pos;
+  
+  return map->buckets[pos];
 }
 
-Pair * nextMap(HashMap * map) {
-
-    return NULL;
+Pair * nextMap(HashMap * map) 
+{
+  int pos = map->current;
+  
+  while (map->buckets[pos] == NULL) 
+  {
+    pos = (pos + 1) % map->capacity;
+  }
+  
+  map->current = pos;
+  
+  return map->buckets[pos];
 }
