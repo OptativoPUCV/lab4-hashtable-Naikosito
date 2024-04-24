@@ -72,20 +72,35 @@ HashMap * createMap(long capacity)
 }
 
 void eraseMap(HashMap * map,  char * key) 
-{    
+{   
+int pos = hash(key, map->capacity);
 
-
-}
-
-Pair * searchMap(HashMap * map,  char * key) {   
-
-  int pos = hash(key, map->capacity);
-
+  // Avanza hasta que las llaves coincidan o llege a una casilla NULL
   while (map->buckets[pos] != NULL && strcmp(map->buckets[pos]->key, key) != 0) 
   {
     pos = (pos + 1) % map->capacity;
   }
-  
+  // Si llega a una casilla NULL significa que no esta en la lista, devuelve NULL
+  if (map->buckets[pos] == NULL)
+    return;
+
+  else
+  {
+    map->buckets[pos]->key = NULL;
+    map->size--;
+  }
+}
+
+Pair * searchMap(HashMap * map,  char * key)
+{   
+int pos = hash(key, map->capacity);
+
+  // Avanza hasta que las llaves coincidan o llega a una casilla NULL
+  while (map->buckets[pos] != NULL && strcmp(map->buckets[pos]->key, key) != 0) 
+  {
+    pos = (pos + 1) % map->capacity;
+  }
+  // Si llega a una casilla NULL significa que no esta en la lista, devuelve NULL
   if (map->buckets[pos] == NULL)
     return NULL;
     
@@ -93,10 +108,7 @@ Pair * searchMap(HashMap * map,  char * key) {
   {
     map->current = pos;
     return map->buckets[pos];
-    
   }
-    
-  
 }
 
 Pair * firstMap(HashMap * map) {
