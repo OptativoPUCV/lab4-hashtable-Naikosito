@@ -91,8 +91,9 @@ Pair * searchMap(HashMap * map,  char * key) {
     
   else
   {
-    return map->buckets[pos];
     map->current = pos;
+    return map->buckets[pos];
+    
   }
     
   
