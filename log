@@ -161,3 +161,22 @@ hashmap.c:43:1: error: control reaches end of non-void function [-Werror=return-
 cc1: all warnings being treated as errors
 Compilation failed
 f4b44a0
+Wed 24 Apr 2024 08:05:11 PM UTC: 
+ hashmap.c | 18 ++++--------------
+ 1 file changed, 4 insertions(+), 14 deletions(-)
+In file included from test.c:4:
+hashmap.c: In function ‘insertMap’:
+hashmap.c:46:22: error: array subscript is not an integer
+   46 |   while (map->buckets[index] != NULL && strcmp(map->buckets[index]->key, key) != 0) {
+      |                      ^
+hashmap.c:46:60: error: array subscript is not an integer
+   46 |   while (map->buckets[index] != NULL && strcmp(map->buckets[index]->key, key) != 0) {
+      |                                                            ^
+hashmap.c:47:25: error: invalid operands to binary % (have ‘char * (*)(const char *, int)’ and ‘long int’)
+   47 |     index = (index + 1) % map->capacity;
+      |             ~~~~~~~~~~~ ^ ~~~~~~~~~~~~~
+      |                    |         |
+      |                    |         long int
+      |                    char * (*)(const char *, int)
+Compilation failed
+6c2ce14
