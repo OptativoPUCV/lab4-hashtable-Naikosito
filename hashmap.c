@@ -144,12 +144,13 @@ Pair * nextMap(HashMap * map)
   int pos = (map->current + 1) % map->capacity;
 
   
+  int initialPos = pos; // Guardamos la posición inicial para detectar un ciclo completo
+
   while (map->buckets[pos] == NULL || map->buckets[pos]->key == NULL) 
   {
     pos = (pos + 1) % map->capacity;
-    // If we've looped back to the current index, there are no more elements
-    if(pos == map->current)
-      return NULL;
+    // Si volvemos a la posición inicial, significa que no encontramos ningún dato válido
+    if (pos == initialPos) return NULL;
   }
   
   map->current = pos;
