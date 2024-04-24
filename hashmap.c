@@ -56,11 +56,12 @@ HashMap * createMap(long capacity) {
     map->buckets = (Pair **)malloc(sizeof(Pair *) * capacity);
     map->size = 0;
     map->capacity = capacity;
-    map->current = -1; 
+    map->current = NULL; 
     return map;
 }
 
-void eraseMap(HashMap * map,  char * key) {    
+void eraseMap(HashMap * map,  char * key) 
+{    
 
 
 }
