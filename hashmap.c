@@ -65,11 +65,11 @@ void enlarge(HashMap * map) {
   map->size = 0;
 
   for (int i = 0; i < oldCapacity; i++)
+    if (old_array[i] != NULL)
     {
-      insertMap(map,oldBuckets[i]->key, oldBuckets[i]->value);
+      insertMap(map, oldBuckets[i]->key, oldBuckets[i]->value);
       free(oldBuckets[i]);
     }
-  
 
 }
 
