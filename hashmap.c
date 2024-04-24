@@ -43,8 +43,8 @@ void insertMap(HashMap * map, char * key, void * value)
 {
   int pos = hash(key, map->capacity);
   
-  while (map->buckets[index] != NULL && strcmp(map->buckets[index]->key, key) != 0) {
-    index = (index + 1) % map->capacity;
+  while (map->buckets[pos] != NULL && strcmp(map->buckets[pos]->key, key) != 0) {
+      pos = (pos + 1) % map->capacity;
 }
   
   Pair* newElem = malloc(sizeof(Pair));

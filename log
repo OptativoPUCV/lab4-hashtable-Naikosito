@@ -180,3 +180,9 @@ hashmap.c:47:25: error: invalid operands to binary % (have ‘char * (*)(const c
       |                    char * (*)(const char *, int)
 Compilation failed
 6c2ce14
+Wed 24 Apr 2024 08:05:48 PM UTC: 
+ hashmap.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+ tests:  1|5
+total_score: 10/70
+be701f0
