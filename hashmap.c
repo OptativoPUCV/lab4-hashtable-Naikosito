@@ -43,13 +43,12 @@ void insertMap(HashMap * map, char * key, void * value)
 {
   int pos = hash(key, map->capacity);
   
+  // solveCollision, si hay colisiones avanza hasta encontrar un espacio libre
   while (map->buckets[pos] != NULL && strcmp(map->buckets[pos]->key, key) != 0) {
       pos = (pos + 1) % map->capacity;
 }
-  
-  Pair* newElem = malloc(sizeof(Pair));
-  newElem->value = value;
-  newElem->key = key;
+  // guardo memoria para el nuevo pair, llave y valor
+  Pair* newElem = createPair(key, value);
   map->buckets[pos] = newElem;
   map->size++;
 
