@@ -51,6 +51,7 @@ void insertMap(HashMap * map, char * key, void * value)
   newElem->value = value;
   newElem->key = key;
   map->buckets[pos] = newElem;
+  map->size++;
 
 }
 
