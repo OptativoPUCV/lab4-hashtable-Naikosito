@@ -38,7 +38,7 @@ int is_equal(void* key1, void* key2){
     return 0;
 }
 
-void solveCollision(HashMap * map, int *index) {
+int solveCollision(HashMap * map, int *index) {
     *index = (*index + 1) % map->size;
 }
 
