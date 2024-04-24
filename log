@@ -68,3 +68,33 @@ hashmap.c:58:18: error: implicit declaration of function ‘resolveCollision’;
 cc1: all warnings being treated as errors
 Compilation failed
 32f10b6
+Wed 24 Apr 2024 08:01:10 PM UTC: 
+ hashmap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:4:
+hashmap.c: In function ‘insertMap’:
+hashmap.c:58:33: error: passing argument 1 of ‘solveCollision’ makes integer from pointer without a cast [-Werror=int-conversion]
+   58 |     int newPos = solveCollision(map, pos);
+      |                                 ^~~
+      |                                 |
+      |                                 HashMap * {aka struct HashMap *}
+hashmap.c:41:25: note: expected ‘int’ but argument is of type ‘HashMap *’ {aka ‘struct HashMap *’}
+   41 | void solveCollision(int hash, int *index, int size) {
+      |                     ~~~~^~~~
+hashmap.c:58:38: error: passing argument 2 of ‘solveCollision’ makes pointer from integer without a cast [-Werror=int-conversion]
+   58 |     int newPos = solveCollision(map, pos);
+      |                                      ^~~
+      |                                      |
+      |                                      int
+hashmap.c:41:36: note: expected ‘int *’ but argument is of type ‘int’
+   41 | void solveCollision(int hash, int *index, int size) {
+      |                               ~~~~~^~~~~
+hashmap.c:58:18: error: too few arguments to function ‘solveCollision’
+   58 |     int newPos = solveCollision(map, pos);
+      |                  ^~~~~~~~~~~~~~
+hashmap.c:41:6: note: declared here
+   41 | void solveCollision(int hash, int *index, int size) {
+      |      ^~~~~~~~~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+e60e036

@@ -55,7 +55,7 @@ void insertMap(HashMap * map, char * key, void * value)
   }
   else
   {
-    int newPos = resolveCollision(map, pos);
+    int newPos = solveCollision(map, pos);
     Pair* newElem = malloc(sizeof(Pair));
     newElem->value = value;
     newElem->key = key;
