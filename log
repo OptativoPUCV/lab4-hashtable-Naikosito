@@ -56,3 +56,15 @@ hashmap.c:55:18: error: implicit declaration of function ‘resolveCollision’ 
 cc1: all warnings being treated as errors
 Compilation failed
 4742973
+Wed 24 Apr 2024 08:01:03 PM UTC: 
+ hashmap.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+In file included from test.c:4:
+hashmap.c: In function ‘insertMap’:
+hashmap.c:58:18: error: implicit declaration of function ‘resolveCollision’; did you mean ‘solveCollision’? [-Werror=implicit-function-declaration]
+   58 |     int newPos = resolveCollision(map, pos);
+      |                  ^~~~~~~~~~~~~~~~
+      |                  solveCollision
+cc1: all warnings being treated as errors
+Compilation failed
+32f10b6

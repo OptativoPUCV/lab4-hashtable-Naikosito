@@ -38,12 +38,15 @@ int is_equal(void* key1, void* key2){
     return 0;
 }
 
+void solveCollision(int hash, int *index, int size) {
+    *index = (*index + 1) % size;
+}
 
 void insertMap(HashMap * map, char * key, void * value) 
 {
   int pos = hash(key, map->capacity);
 
-  if (map->buckets[pos] == NULL || strcmp(key, map->buckets[pos]->key) == 0)
+  if (map->buckets[pos] == NULL || strcmp(key, map->buckets[pos]->key) != 0)
   {
     Pair* newElem = malloc(sizeof(Pair));
     newElem->value = value;
