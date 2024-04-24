@@ -90,7 +90,11 @@ Pair * searchMap(HashMap * map,  char * key) {
     return NULL;
     
   else
+  {
     return map->buckets[pos];
+    map->current = pos;
+  }
+    
   
 }
 
