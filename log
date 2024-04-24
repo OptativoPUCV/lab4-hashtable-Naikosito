@@ -98,3 +98,27 @@ hashmap.c:41:6: note: declared here
 cc1: all warnings being treated as errors
 Compilation failed
 e60e036
+Wed 24 Apr 2024 08:02:23 PM UTC: 
+ hashmap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:4:
+hashmap.c: In function ‘solveCollision’:
+hashmap.c:42:29: error: ‘size’ undeclared (first use in this function)
+   42 |     *index = (*index + 1) % size;
+      |                             ^~~~
+hashmap.c:42:29: note: each undeclared identifier is reported only once for each function it appears in
+hashmap.c: In function ‘insertMap’:
+hashmap.c:58:38: error: passing argument 2 of ‘solveCollision’ makes pointer from integer without a cast [-Werror=int-conversion]
+   58 |     int newPos = solveCollision(map, pos);
+      |                                      ^~~
+      |                                      |
+      |                                      int
+hashmap.c:41:41: note: expected ‘int *’ but argument is of type ‘int’
+   41 | void solveCollision(HashMap * map, int *index) {
+      |                                    ~~~~~^~~~~
+hashmap.c:58:18: error: void value not ignored as it ought to be
+   58 |     int newPos = solveCollision(map, pos);
+      |                  ^~~~~~~~~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+ccadca8
