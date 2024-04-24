@@ -39,7 +39,7 @@ int is_equal(void* key1, void* key2){
 }
 
 void solveCollision(HashMap * map, int *index) {
-    *index = (*index + 1) % size;
+    *index = (*index + 1) % map->size;
 }
 
 void insertMap(HashMap * map, char * key, void * value) 
